@@ -10,15 +10,17 @@ import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" Component={Home} />
-        <Route path="/login" Component={Login} />
-        <Route path="/register" Component={Register} />
-        <PrivateRoute path="/dashboard" component={Dashboard} />
-      </Routes>
-    </Router>
+    <>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" Component={Home} />
+          <Route path="/login" Component={Login} />
+          <Route path="/register" Component={Register} />
+          <PrivateRoute path="/dashboard" component={Dashboard} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
