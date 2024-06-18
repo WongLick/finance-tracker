@@ -1,3 +1,4 @@
+// src/context/AuthContext.js
 import React, { useState, useEffect, createContext } from "react";
 import axios from "axios";
 
@@ -8,10 +9,10 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    //check local storage for token
+    // Check local storage for token
     const token = localStorage.getItem("token");
     if (token) {
-      //get user data if token exist
+      // Get user data if token exists
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       axios
         .get("api/auth/user")
@@ -47,11 +48,11 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("token");
     delete axios.defaults.headers.common["Authorization"];
     setUser(null);
-
-    return (
-      <AuthContext.Provider value={{ user, login, register, logout, loading }}>
-        {children}
-      </AuthContext.Provider>
-    );
   };
+
+  return (
+    <AuthContext.Provider value={{ user, login, register, logout, loading }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
